@@ -102,7 +102,7 @@ int main(){
     struct SLLNode *head = NULL;
     int choice, position, data;
 
-    while(1){
+    do{
         show_menu();
         scanf("%d", &choice);
 
@@ -127,8 +127,9 @@ int main(){
                 printf("\nDeleted!");
                 break;
             default:
-                return 0;            
+                exit(0);
+                break;        
         }
-    }
+    }while(1);
     return 0;
 }
