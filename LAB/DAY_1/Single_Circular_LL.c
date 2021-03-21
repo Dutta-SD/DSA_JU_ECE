@@ -203,8 +203,49 @@ int listLength()
     return count;
 }
 
+/*Show menu*/
+void show_menu(){
+    printf("\nSelect from the options\n");
+    printf("[1] print the list\n");
+    printf("[2] get length of list\n");
+    printf("[3] insert at position\n");
+    printf("[4] delete at position\n");
+    printf("Press anything else to exit\n");
+    printf(">>> ");
+}
+
+/* Driver Function */
 int main(){
+    int choice, position, data;
 
+    do{
+        show_menu();
+        scanf("%d", &choice);
 
-
+        switch (choice){
+            case 1:
+                printf("\nThe List is: ");
+                printList();
+                break;
+            case 2:
+                printf("\nThe length of the List is: %d", listLength());
+                break;
+            case 3:
+                printf("\nEnter Position to insert and data ");
+                scanf("%d %d", &position, &data);
+                insertAtPosition(data, position);
+                printf("\nInserted!");
+                break;
+            case 4:
+                printf("\nEnter Position to delete ");
+                scanf("%d", &position);
+                deleteAtPosition(position);
+                printf("\nDeleted!");
+                break;
+            default:
+                exit(0);
+                break;        
+        }
+    }while(1);
+    return 0;
 }
