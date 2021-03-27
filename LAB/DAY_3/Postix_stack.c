@@ -73,6 +73,7 @@ int pop(Stack *stk){
 void printStack(const Stack *stk){
     int lim = NULL_STACK;
     int i = stk -> top;
+    printf("Stack Contents : ");
 
     if(isEmpty((stk))) return;
     while(i > lim){
@@ -116,8 +117,9 @@ int evaluatePostfixExpresssion(char* expression){
 int main(){
     char expression[MAX_EXPRESSION_LENGTH];
     int finalExpressionValue;
+    printf("Enter an expression with last char $. [MAX LEN 100] : ");
     scanf("%s", expression);
     finalExpressionValue = evaluatePostfixExpresssion(expression);
-    printf("\nValue of Expression is : %d", finalExpressionValue);
+    printf("\nValue of Expression is : %d ", finalExpressionValue);
     return 0;     
 }
