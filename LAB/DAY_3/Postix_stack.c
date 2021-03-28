@@ -1,4 +1,3 @@
-
 /* Stack implementation with fixed memory array */
 # include <stdio.h>
 # include <stdlib.h>
@@ -95,21 +94,44 @@ int evaluatePostfixExpresssion(char* expression){
 
 	for (i = 0; expression[i] != END_OF_EXPRESSION; ++i){
 
-		if (isdigit(expression[i]))
+		if (isdigit(expression[i])){
 			push(stack, expression[i] - '0');
+            printf("%c Pushed into the stack\n", expression[i]);
+            printStack(stack);
+        }
 
 		else {
 			int val1 = pop(stack);
 			int val2 = pop(stack);
-			switch (expression[i]){
-			case '+': push(stack, val2 + val1); break;
-			case '-': push(stack, val2 - val1); break;
-			case '*': push(stack, val2 * val1); break;
-			case '/': push(stack, val2 / val1); break;
-            case '^': push(stack, (int)pow(val2, val1)); break;
+
+			switch(expression[i]){
+			    case '+':
+                    printf("%d + %d = %d ... Pushing into stack\n", val2, val1, val2 + val1);
+                    push(stack, val2 + val1);
+                    printStack(stack);
+                    break;
+			    case '-':
+                    printf("%d - %d = %d ... Pushing into stack\n", val2, val1, val2 + val1);
+                    push(stack, val2 - val1);
+                    printStack(stack);
+                    break;
+			    case '*': 
+                    printf("%d * %d = %d ... Pushing into stack\n", val2, val1, val2 * val1);
+                    push(stack, val2 * val1); 
+                    printStack(stack);
+                    break;
+			    case '/':
+                    printf("%d / %d = %d ... Pushing into stack\n", val2, val1, val2 / val1);
+                    push(stack, val2 * val1); 
+                    printStack(stack);
+                    break;
+                case '^':
+                    printf("%d ^ %d = %d ... Pushing into stack\n", val2, val1, (int)pow(val2, val1));
+                    push(stack, (int)pow(val2, val1)); 
+                    printStack(stack);
+                    break;
 			}
 		}
-        printStack(stack);
 	}
 	return pop(stack);
 }
