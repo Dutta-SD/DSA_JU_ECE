@@ -142,6 +142,6 @@ int main(){
     printf("Enter an expression with last char $. [MAX LEN 100] : ");
     scanf("%s", expression);
     finalExpressionValue = evaluatePostfixExpresssion(expression);
-    printf("\nValue of Expression is : %d ", finalExpressionValue);
+    printf("Value of Expression is : %d\n", finalExpressionValue);
     return 0;     
 }
