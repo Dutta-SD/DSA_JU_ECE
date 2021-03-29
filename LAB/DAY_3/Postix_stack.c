@@ -103,6 +103,7 @@ int evaluatePostfixExpresssion(char* expression){
 		else {
 			int val1 = pop(stack);
 			int val2 = pop(stack);
+            if(val1 == '$' || val2 == '$') return END_OF_EXPRESSION;
 
 			switch(expression[i]){
 			    case '+':
@@ -122,7 +123,7 @@ int evaluatePostfixExpresssion(char* expression){
                     break;
 			    case '/':
                     printf("%d / %d = %d ... Pushing into stack\n", val2, val1, val2 / val1);
-                    push(stack, val2 * val1); 
+                    push(stack, val2 / val1); 
                     printStack(stack);
                     break;
                 case '^':
@@ -139,9 +140,17 @@ int evaluatePostfixExpresssion(char* expression){
 int main(){
     char expression[MAX_EXPRESSION_LENGTH];
     int finalExpressionValue;
-    printf("Enter an expression with last char $. [MAX LEN 100] : ");
+    char endChar = END_OF_EXPRESSION;
+
+    printf("Enter an expression [MAX LEN 100] : ");
     scanf("%s", expression);
+    strncat(expression, &endChar, 1);
+
+
     finalExpressionValue = evaluatePostfixExpresssion(expression);
-    printf("Value of Expression is : %d\n", finalExpressionValue);
+    if(finalExpressionValue != '$')
+        printf("Value of Expression is : %d\n", finalExpressionValue);
+    else
+        printf("YOU MADE A MISTAKE SOMEWHERE!!\n GARBAGE OUTPUT!!");
     return 0;     
 }
