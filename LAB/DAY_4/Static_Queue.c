@@ -12,20 +12,18 @@ typedef struct Static_Queue{
     int* queue;
 }Queue;
 
+static Queue q_;
 
 // init queue
 void initQueue(){
-    _q.front = -1;
-    _q.rear = -1;
-    _q.queue = malloc(MAX_SIZE * sizeof(int));
-    if(_q.queue == NULL){
+    q_.front = -1;
+    q_.rear = -1;
+    q_.queue = (int*)malloc(MAX_SIZE * sizeof(int));
+    if(q_.queue == NULL){
         printf("NO MEMORY ALLOCATED!!\nEXITING!!");
         exit(EXIT_FAILURE);
     }
 }
-
-// Queue - declare and init
-Queue _q;
 
 // Functions to Handle the Queue
 
@@ -41,9 +39,7 @@ void displayMenu();
 int main(){
     initQueue();
 	int choice;
-	clrscr();
 	do{
-		clrscr();
         displayMenu();		
 		scanf("%d", &choice);
  
@@ -69,43 +65,43 @@ int main(){
  
 void enqueue(){
 	int no;
-	printf("\n Enter Number to be inserted to Queue > ");
+	printf("Enter Number to be inserted to Queue > ");
 	scanf("%d",&no);
  
-	if(_q.rear < MAX_SIZE-1){
-		_q.queue[++(_q.rear)] = no;
-		if(_q.front==-1)
-		_q.front = 0;
+	if(q_.rear < MAX_SIZE-1){
+		q_.queue[++(q_.rear)] = no;
+		if(q_.front==-1)
+		q_.front = 0;
 	}else{
 		printf("\nQueue overflow...");
 	}
 }
  
 void dequeue(){
-	if(_q.front == -1){
+	if(q_.front == -1){
 		printf("\nQueue Underflow...");
 		return;
 	}else{
-		printf("\nDeleted Item --> %d",_q.queue[_q.front]);
+		printf("\nDeleted Item --> %d",q_.queue[q_.front]);
 	}
-	if(_q.front == _q.rear){
-		_q.front=-1;
-		_q.rear=-1;
+	if(q_.front == q_.rear){
+		q_.front=-1;
+		q_.rear=-1;
 	}else{
-        _q.front++;
+        q_.front++;
 	}
 }
  
 void displayQueue(){
 	int i;
-	if(_q.front == -1){
+	if(q_.front == -1){
 		printf("\nQueue is empty....\n");
 		return;
 	}
     printf("Queue : [front] -> ");
-	for(i = _q.front; i <= _q.rear - 1; i++)
-		printf("%d --> ",_q.queue[i]);
-    printf("%d [rear]", _q.rear);
+	for(i = q_.front; i < q_.rear; i++)
+		printf("%d --> ",q_.queue[i]);
+    printf("%d [rear]\n", q_.rear);
 }
 
 void displayMenu(){
