@@ -9,7 +9,8 @@ struct Node{
 	struct Node *next;
 }*front, *rear; 
  
-// enqueue
+// enqueue - puts in queue
+// Since dynamic queue, so no OVERFLOW
 void enqueue(int data){
     struct Node *newNode; 
     newNode = (struct Node*) malloc(sizeof(struct Node)); 
@@ -22,13 +23,13 @@ void enqueue(int data){
     rear = newNode;
 }
 
-// dequeue
+// dequeue - removes from queue
 int dequeue(){
     struct Node *temp;
     int number;
 
     if(front == NULL || rear == NULL){
-        printf("\nUnder Flow..Returning Garbage Value");
+        printf("\n![WARNING] UNDERFLOW. Returning Garbage Value");
         return INT_MIN;
     }else{
         temp = front;
@@ -50,7 +51,7 @@ void display(){
     }
 
     if(front == rear){
-        printf("Queue [front] %d [rear]\n", front->data);
+        printf("\nQueue [front] %d [rear]\n", front->data);
         return;
     }
 
