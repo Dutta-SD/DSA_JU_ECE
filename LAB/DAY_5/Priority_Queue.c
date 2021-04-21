@@ -1,6 +1,3 @@
-/Assignment 5
-// 2. Implement a min-priority queue. Your program should contain all the necessary functions like extract_min() and others.
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>

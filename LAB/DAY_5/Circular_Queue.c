@@ -1,116 +1,92 @@
-#include<stdio.h>
-#include<stdlib.h>
+/* Circular Queue */
+# include<stdio.h>
+# include<stdlib.h>
+# include <limits.h>
+// Maximum size of queue
+# define MAXSIZE 3
 
 typedef struct Node{
+    int data;
+    struct Node *next;
+} Node;
 
-int data;
+// Pointers
+Node *front = NULL;
+Node *rear = NULL;
 
-struct Node *next;
-
-}Node;
-
-Node *createQueue(){
-    Node *rear=NULL,*front=NULL;
-    printf("How many items you want to create in queue?");
-    int n,data;
-    scanf("%d",&n);
-    int i = 0;
-    while(i<n){
-        if(i==0){
-        printf("Enter the data: ");
-        scanf("%d",&data);
-        Node *newNode = (Node *)malloc(sizeof(Node));
-        newNode->data = data;
-        newNode->next=NULL;
-        rear = newNode;
-        front = rear;
-
-    }
-    else
-    {
-        printf("Enter the data: ");
-        scanf("%d",&data);
-        Node *newNode = (Node *)malloc(sizeof(Node));
-        newNode->data = data;
-        newNode->next=front;
-        rear->next=newNode;
-        rear = newNode;
-
-    }
-    ++i;
-
-    }
-
-    return rear;
-
-}
-
-void display(Node *rear, Node *front){
-    if(!rear){
-
-        printf("\nNOTHING TO DISPLAY\n");
+// displays queue
+void display(){
+    if(rear == NULL){
+        printf("\nUNDERFLOW...");
         return;
     }
 
     Node *temp = front;
 
-    if(!rear->next)
-    {
-        printf("%d\n",rear->data);
-        return ; 
+    if(rear -> next != NULL){
+        printf("%d --> ", rear -> data);
+        return; 
     }
 
-    if(temp!=rear)
-    {
-        printf("%d ",temp->data);
-        display(rear, temp->next);
+    if(temp != rear){
+        printf("%d --> ",temp -> data);
+        display(rear, temp -> next);
     }
     else{
-        printf("%d\n",temp->data);
+        printf("%d --> ",temp -> data);
 
     }
 }
 
-void enqueue(Node **rear,int data){
+// enters one data into queue
+void enqueue(int data){
+
+    if(front -> next == rear){
+        printf("OVERFLOW...\n");
+        return;
+    }
+
     Node *newNode = (Node *)malloc(sizeof(Node));
-    newNode->data = data;
-    if(!(*rear)){
-    newNode->next=NULL;
-    *rear = newNode;
-    return;
-    }
-    Node *temp = *rear;
-    if(!(*rear)->next){
-        newNode->next = temp;
-    }
-    else{
-        newNode->next = temp->next;
-    }
-    temp->next = newNode;
-    *rear = newNode;
-    printf("a new Node with data %d enqueued successfully\n",data);
+    newNode -> data = data;
 
+    if(rear != NULL){
+        newNode -> next=NULL;
+        rear = newNode;
+        return;
+    }
+
+    Node *temp = rear;
+
+    if(rear -> next){
+        newNode -> next = temp;
+    }else{
+        newNode -> next = temp -> next;
+    }
+    temp -> next = newNode;
+    rear = newNode;
+    printf("NEW NODE INSERTED. DATA : { %d }", data);
 }
 
-int dequeue(Node *rear){
+int dequeue(){
     int data;
     if(!rear){
-        printf("\nNO ITEMS IN THE QUEUE\n");
-        return 0;
+        printf("UNDERFLOW...GARBAGE RETURNED\n");
+        return INT_MIN;
 
     }
+
     if(!rear->next){
         data = rear->data;
         free(rear);
         return data;
     }
+
     Node *temp = rear->next;
     data = temp->data;
     rear->next = temp->next;
     free(temp);
-    printf("Delete item is: %d\n",data);
-    return data;
 
+    return data;
 }
 
 void main(){
