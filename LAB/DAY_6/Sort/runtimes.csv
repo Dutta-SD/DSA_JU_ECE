@@ -9,3 +9,9 @@ SelectionSort, U, 20000, 0.890689
 SelectionSort, P, 20000, 0.756081
 SelectionSort, U, 20000, 0.898117
 SelectionSort, P, 20000, 0.760257
+InsertionSort, U, 20000, 0.546354
+InsertionSort, P, 20000, 0.083325
+InsertionSort, U, 20000, 0.523334
+InsertionSort, P, 20000, 0.087797
+InsertionSort, U, 20000, 0.590339
+InsertionSort, P, 20000, 0.089370
