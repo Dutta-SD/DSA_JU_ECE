@@ -23,3 +23,15 @@ MergeSort, U, 20000, 0.013946
 MergeSort, P, 20000, 0.011735
 MergeSort, U, 20000, 0.017284
 MergeSort, P, 20000, 0.013135
+QuickSort, U, 20000, 0.013791
+QuickSort, P, 20000, 0.985679
+QuickSort, U, 20000, 0.011248
+QuickSort, P, 20000, 0.961104
+QuickSort, U, 20000, 0.012951
+QuickSort, P, 20000, 0.984179
+QuickSortInbuilt, U, 20000, 0.010647
+QuickSortInbuilt, P, 20000, 0.006195
+QuickSortInbuilt, U, 20000, 0.010531
+QuickSortInbuilt, P, 20000, 0.007331
+QuickSortInbuilt, U, 20000, 0.010170
+QuickSortInbuilt, P, 20000, 0.006379

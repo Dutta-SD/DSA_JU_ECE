@@ -4,39 +4,12 @@
 // USED LARGE SIZED FILES, SORTED OUTPUT NOT SHOWN
 
 /* ---------QUICK SORT ALGORITHM----------*/
-void swap(long* a, long* b){ 
-    long t = *a; 
-    *a = *b; 
-    *b = t; 
-}  
 
-long partition (long arr[], long low, long high) { 
-    long pivot = arr[high]; // pivot 
-    long i = (low - 1); // Rightmost element
-  
-    for (long j = low; j <= high - 1; j++){ 
-        // If current element is smaller than the pivot 
-        if (arr[j] < pivot) { 
-            i++; // increment index of smaller element 
-            swap(&arr[i], &arr[j]); 
-        } 
-    } 
-    swap(&arr[i + 1], &arr[high]); 
-    return (i + 1); 
-} 
-  
-void quickSort(long arr[], long low, long high) { 
-    if (low < high){ 
-        /* pi is partitioning index, arr[p] is now 
-        at right place */
-        long pi = partition(arr, low, high); 
-  
-        // Separately sort elements before 
-        // partition and after partition 
-        quickSort(arr, low, pi - 1); 
-        quickSort(arr, pi + 1, high); 
-    } 
-} 
+// We will be using the inbuilt quick sort 
+// algorithm. It needs a comparing function
+int cmpfunc (const void * a, const void * b) {
+   return ( *(long*)a - *(long*)b );
+}
 
 /*---------------------------------------*/
 
@@ -52,12 +25,14 @@ void runOnRandomData(void) {
     }
 
     clock_t start = clock();
-    quickSort(arr, 0, len - 1);
+
+    qsort(arr, len, sizeof(long), cmpfunc);
+
     clock_t stop = clock();
 
     double runtime = (double)(stop - start) / CLOCKS_PER_SEC;
 
-    printf("QuickSort, U, %ld, %lf\n", len, runtime);
+    printf("QuickSortInbuilt, U, %ld, %lf\n", len, runtime);
 }
 
 void runOnPartialSortData(void) {
@@ -72,12 +47,12 @@ void runOnPartialSortData(void) {
     }
 
     clock_t start = clock();
-    quickSort(arr,0, len - 1);
+    qsort(arr, len, sizeof(long), cmpfunc);
     clock_t stop = clock();
 
     double runtime = (double)(stop - start) / CLOCKS_PER_SEC;
 
-    printf("QuickSort, P, %ld, %lf\n", len, runtime);
+    printf("QuickSortInbuilt, P, %ld, %lf\n", len, runtime);
 }
   
 int main(){
