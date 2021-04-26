@@ -1,4 +1,4 @@
-AlgorithmName, Partial_Or_Unsorted, LengthOfData, TimeTakes_s,
+AlgorithmName,P_or_S,LengthOfData,TimeTakes_s
 BubbleSort, U, 20000, 2.058708
 BubbleSort, U, 20000, 2.090390
 BubbleSort, U, 20000, 2.010210
@@ -35,3 +35,21 @@ QuickSortInbuilt, U, 20000, 0.010531
 QuickSortInbuilt, P, 20000, 0.007331
 QuickSortInbuilt, U, 20000, 0.010170
 QuickSortInbuilt, P, 20000, 0.006379
+BubbleSort, U, 20000, 1.078253
+BubbleSort, P, 20000, 0.502249
+BubbleSort, U, 20000, 1.095757
+BubbleSort, P, 20000, 0.505347
+BubbleSort, U, 20000, 1.082848
+BubbleSort, P, 20000, 0.505030
+BubbleSort, U, 20000, 1.080364
+BubbleSort, P, 20000, 0.503673
+BubbleSort, U, 20000, 1.089163
+BubbleSort, P, 20000, 0.506017
+InsertionSort, U, 20000, 0.226275
+InsertionSort, P, 20000, 0.043855
+MergeSort, U, 20000, 0.004755
+MergeSort, P, 20000, 0.003846
+QuickSort, U, 20000, 0.003651
+QuickSort, P, 20000, 0.478488
+QuickSortInbuilt, U, 20000, 0.003365
+QuickSortInbuilt, P, 20000, 0.001495

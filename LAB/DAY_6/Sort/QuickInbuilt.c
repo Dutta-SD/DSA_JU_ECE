@@ -4,13 +4,11 @@
 // USED LARGE SIZED FILES, SORTED OUTPUT NOT SHOWN
 
 /* ---------QUICK SORT ALGORITHM----------*/
-
 // We will be using the inbuilt quick sort 
 // algorithm. It needs a comparing function
 int cmpfunc (const void * a, const void * b) {
    return ( *(long*)a - *(long*)b );
 }
-
 /*---------------------------------------*/
 
 void runOnRandomData(void) {
