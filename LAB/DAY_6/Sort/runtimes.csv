@@ -15,3 +15,11 @@ InsertionSort, U, 20000, 0.523334
 InsertionSort, P, 20000, 0.087797
 InsertionSort, U, 20000, 0.590339
 InsertionSort, P, 20000, 0.089370
+MergeSort, U, 20000, 0.013382
+MergeSort, P, 20000, 0.011581
+MergeSort, U, 20000, 0.018215
+MergeSort, P, 20000, 0.013651
+MergeSort, U, 20000, 0.013946
+MergeSort, P, 20000, 0.011735
+MergeSort, U, 20000, 0.017284
+MergeSort, P, 20000, 0.013135
