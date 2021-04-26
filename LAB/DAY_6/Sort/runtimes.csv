@@ -5,3 +5,7 @@ BubbleSort, U, 20000, 2.010210
 BubbleSort, U, 20000, 2.049592
 BubbleSort, U, 20000, 2.046198
 BubbleSort, P, 20000, 0.866177
+SelectionSort, U, 20000, 0.890689
+SelectionSort, P, 20000, 0.756081
+SelectionSort, U, 20000, 0.898117
+SelectionSort, P, 20000, 0.760257
