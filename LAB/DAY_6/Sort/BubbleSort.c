@@ -34,12 +34,33 @@ void runOnRandomData(void) {
     bubbleSort(arr, len);
     clock_t stop = clock();
 
-    long runtime = (double)(stop - start) / CLOCKS_PER_SEC;
+    double runtime = (double)(stop - start) / CLOCKS_PER_SEC;
 
     printf("BubbleSort, U, %ld, %lf\n", len, runtime);
+}
+
+void runOnPartialSortData(void) {
+    freopen("PartiallySorted.input", "r", stdin);
+    freopen("runtimes.csv", "a", stdout);
+    long len;
+    scanf("%ld", &len);
+    long *arr = malloc(len * sizeof(long));
+
+    for(long i = 0; i < len; ++i){
+        scanf("%ld", &arr[i]);
+    }
+
+    clock_t start = clock();
+    bubbleSort(arr, len);
+    clock_t stop = clock();
+
+    double runtime = (double)(stop - start) / CLOCKS_PER_SEC;
+
+    printf("BubbleSort, P, %ld, %lf\n", len, runtime);
 }
   
 int main(){
     runOnRandomData();
+    runOnPartialSortData();
     return 0;
 }

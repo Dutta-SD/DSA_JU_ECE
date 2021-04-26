@@ -1,0 +1,7 @@
+AlgorithmName, Partial_Or_Unsorted, LengthOfData, TimeTakes_s,
+BubbleSort, U, 20000, 2.058708
+BubbleSort, U, 20000, 2.090390
+BubbleSort, U, 20000, 2.010210
+BubbleSort, U, 20000, 2.049592
+BubbleSort, U, 20000, 2.046198
+BubbleSort, P, 20000, 0.866177
