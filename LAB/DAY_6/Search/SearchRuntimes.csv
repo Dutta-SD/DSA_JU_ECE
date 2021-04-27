@@ -1,0 +1,20 @@
+AlgorithmName,lengthOfArray,RunTime
+BinarySearch, 500000, 0.000031
+BinarySearch, 500000, 0.000022
+BinarySearch, 500000, 0.000024
+BinarySearch, 500000, 0.000027
+BinarySearch, 500000, 0.000040
+BinarySearch, 500000, 0.000044
+BinarySearch, 500000, 0.000059
+LinearSearch, 500000, 0.000282
+LinearSearch, 500000, 0.000262
+LinearSearch, 500000, 0.000430
+LinearSearch, 500000, 0.000637
+LinearSearch, 500000, 0.000656
+LinearSearch, 500000, 0.000651
+LinearSearch, 500000, 0.000569
+LinearSearch, 500000, 0.000580
+LinearSearch, 500000, 0.000564
+BinarySearch, 500000, 0.000045
+BinarySearch, 500000, 0.000031
+LinearSearch, 500000, 0.000395
