@@ -1,4 +1,4 @@
-// To check if tree is strictly binary or not
+// Treee Traversals
 # include <stdio.h>
 # include <stdlib.h>
 # define LEFT 'l'
@@ -72,40 +72,70 @@ void print_tree(struct BinaryTreeNode *root, int offset){
     print_tree(root->left, offset + 1);
 }
 
-// This function tests if a binary tree is a full binary tree.
-int is_strictly_binary_tree (struct BinaryTreeNode* root){
-    // If empty tree
+// DELETION FUNCTION - To delete a node in a binary tree
+/*-----------------------------------------------------*/
+
+// Returns the INORDER SUCCESSOR of a node.
+struct BinaryTreeNode* minValueNode(struct BinaryTreeNode* node){
+    struct BinaryTreeNode* current = node;
+ 
+    /* loop down to find the leftmost leaf */
+    while (current && current->left != NULL)
+        current = current->left;
+ 
+    return current;
+}
+ 
+// Deletes the node
+struct BinaryTreeNode* deleteNode(struct BinaryTreeNode* root, int key){
+    // base case
     if (root == NULL)
-        return 1;
-  
-    // If leaf node
-    if (root->left == NULL && root->right == NULL)
-        return 1;
-  
-    // If both left and right are not NULL, and left & right subtrees
-    // are full
-    if ((root->left) && (root->right))
-        return (is_strictly_binary_tree(root->left) && is_strictly_binary_tree(root->right));
-  
-    // We reach here when none of the above if conditions work
-    return 0;
+        return root;
+ 
+    // If the key to be deleted
+    // is smaller than the root's
+    // key, then it lies in left subtree
+    if (key < root->data)
+        root->left = deleteNode(root->left, key);
+ 
+    // If the key to be deleted
+    // is greater than the root's
+    // key, then it lies in right subtree
+    else if (key > root->data)
+        root->right = deleteNode(root->right, key);
+ 
+    // if key is same as root's key,
+    // then This is the node
+    // to be deleted
+    else {
+        // node with only one child or no child
+        if (root->left == NULL) {
+            struct BinaryTreeNode* temp = root->right;
+            free(root);
+            return temp;
+        }
+        else if (root->right == NULL) {
+            struct BinaryTreeNode* temp = root->left;
+            free(root);
+            return temp;
+        }
+ 
+        // node with two children:
+        // Get the inorder successor
+        // (smallest in the right subtree)
+        struct BinaryTreeNode* temp = minValueNode(root->right);
+ 
+        // Copy the inorder
+        // successor's content to this node
+        root->data = temp->data;
+ 
+        // Delete the inorder successor
+        root->right = deleteNode(root->right, temp->data);
+    }
+    return root;
 }
 
-// This function tests if a binary tree is a full binary tree.
-int is_complete_binary_tree (struct BinaryTreeNode* root){
-   
-    // If leaf node
-    if (root->left == NULL && root->right == NULL)
-        return 1;
-  
-    // If both left and right are not NULL, and left & right subtrees
-    // are full
-    if (!(root->left) || !(root->right)) return 0;
-        
-    return (is_complete_binary_tree(root->left) && is_complete_binary_tree(root->right));
-}
-
-// Driver Code
+/*----------------------------------------------------*/
 int main(int argc, char ** argv){
     // Take input from command line regarding file name
     // argv[1] === <filename.txt> file to be opened in program
@@ -125,6 +155,7 @@ int main(int argc, char ** argv){
     int node_data, parent_data, root_node_val;
     char left_or_right;
     int n;
+    int node_to_delete;
 
     fscanf(fp, "%d", &n);
     --n;
@@ -137,21 +168,23 @@ int main(int argc, char ** argv){
         root = insert_node(root, node_data, parent_data, left_or_right);
     }
 
+    // REad the node to delete
+    fscanf(fp, "%d", &node_to_delete);
+
+    // Print original tree
     printf("\nThe tree is : \n");
     print_tree(root, 0);
     printf("\n");
 
-    if(is_strictly_binary_tree(root)){
-        printf("\nYES !! Strictly Binary Tree !!\n");
-    } else {
-        printf("NO!! Not strictly binary tree\n");
-    }
+    // Node to delete
+    printf("\nDELETING NODE %d", node_to_delete);
 
-    if(is_complete_binary_tree(root)){
-        printf("\nYES !! Complete Binary Tree !!\n");
-    } else {
-        printf("NO!! Not Complete binary tree\n");
-    }
+    // delete
+    root = deleteNode(root, node_to_delete);
 
+    // Print the tree again
+    printf("\nThe tree after DELETION is : \n");
+    print_tree(root, 0);
+    printf("\n");
     return 0;
 }

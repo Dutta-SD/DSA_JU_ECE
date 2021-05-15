@@ -1,0 +1,26 @@
+.
+├── contents
+├── Search
+│   ├── BinarySearch.c
+│   ├── InputNumbers.input
+│   ├── LinearSearch.c
+│   └── SearchDataGen.py
+└── Sort
+    ├── bubble
+    ├── BubbleSort.c
+    ├── CompletelyUnsorted.input
+    ├── insertion
+    ├── InsertionSort.c
+    ├── merge
+    ├── MergeSort.c
+    ├── PartiallySorted.input
+    ├── quick1
+    ├── quick2
+    ├── QuickInbuilt.c
+    ├── QuickSort.c
+    ├── randomDataGen.py
+    ├── runtimes.csv
+    ├── selection
+    └── SelectionSort.c
+
+2 directories, 21 files
